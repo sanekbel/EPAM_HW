@@ -8,10 +8,14 @@ from typing import Sequence
 
 
 def check_fibonacci(data: Sequence[int]) -> bool:
-    for i in range(len(data) - 2):
-        if data[i] == data[i + 2] - data[i + 1]:
-            return True
+
+    """Check if the given sequence is Fibonacci sequence"""
+
+    data_begin = data[:2]
+    data_end = data[2:]
+    for num in data_end:
+        if num - data_begin[-1] == data_begin[-2]:
+            data_begin.append(num)
         else:
             return False
-
-
+    return True

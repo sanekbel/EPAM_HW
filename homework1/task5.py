@@ -10,8 +10,13 @@ from typing import List
 
 
 def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
-    max_sum = sum(nums[:k])
-    for i in range(len(nums)-k+1):
-        if sum(nums[i:i+k]) > max_sum:
-            max_sum = sum(nums[i:i+k])
+    """Find a sub-array with length less equal to "k", with maximal sum in list of integers"""
+
+    nums_begin = nums[:k]
+    max_sum = sum(nums_begin)
+    for num in nums[k:]:
+        nums_begin = nums_begin[1:]
+        nums_begin.append(num)
+        if sum(nums_begin) > max_sum:
+            max_sum = sum(nums_begin)
     return max_sum

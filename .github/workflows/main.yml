@@ -17,6 +17,6 @@ jobs:
         run: |
           pip install black isort pytest
           ls -la
-          black --check --skip-magic-trailing-comma.
+          black --check .
           isort --check .
           py.test tests
